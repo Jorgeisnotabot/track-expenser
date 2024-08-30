@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <base target="_top">
+  </head>
+  <body>
+ <div>
+  <h2>Add Expense</h2>
+  <label>Date: <input type="date" id="date"></label><br>
+  <label>Description: <input type="text" id="description"></label><br>
+  <label>Category: <input type="text" id="category"></label><br>
+  <label>Amount: <input type="number" id="amount" step="0.01"></label><br>
+  
+  <h3>Payment Method</h3>
+  <label>Payment Method: 
+    <select id="paymentMethod">
+      <option value="Credit Card">Credit Card</option>
+      <option value="PayPal">PayPal</option>
+      <option value="Bank Transfer">Bank Transfer</option>
+      <option value="Cash">Cash</option>
+    </select>
+  </label><br>
+  
+  <button onclick="submitExpense()">Add Expense</button>
+  
+  <script>
+    function submitExpense() {
+      var date = document.getElementById('date').value;
+      var description = document.getElementById('description').value;
+      var category = document.getElementById('category').value;
+      var amount = parseFloat(document.getElementById('amount').value);
+      var paymentMethod = document.getElementById('paymentMethod').value;
+
+      google.script.run.addExpense(date, description, category, amount, paymentMethod);
+    }
+  </script>
+</div>
+  </body>
+</html>
